@@ -1,8 +1,6 @@
 var mysql = require('mysql');
 var inquirer = require('inquirer');
 
-
-// mySQL info
 var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
@@ -93,12 +91,12 @@ function whatWouldYouLike() {
                 connection.query("UPDATE products SET stock_quantity=? WHERE item_id=?", [newQuantity, product], function(err, res) {
                     if (err) reject(err);
                     console.log('Your total cost is $' + totalCost);
-                    // destroy connection
+                    // end connection
                     connection.destroy();
                 });
             } else {
                 console.log(object);
-                // destroy connection
+                // end connection
                 connection.destroy();
             }
         });
